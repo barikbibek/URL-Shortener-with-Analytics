@@ -1,0 +1,407 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+.env.*.local
+!.env.example
+!.env.sample
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+prisma/migrations/*.sql
+!prisma/migrations/migration_lock.toml
+prisma/migrations/*.db
+prisma/migrations/*.db-journal
+prisma/migrations/*.sqlite
+prisma/migrations/*.sqlite-journal
+prisma/seed.ts
+prisma/seed.js
+!prisma/seed.example.ts
+
+# Database files
+*.db
+*.sqlite
+*.sqlite-journal
+*.sql
+*.dump
+*.backup
+*.sql.gz
+
+# Redis
+dump.rdb
+appendonly.aof
+*.rdb
+*.aof
+
+# Kafka
+/kafka-data/
+/data/
+*.log
+*.logs
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+pm2-*.log
+pm2-error.log
+pm2-out.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+*.seed.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+*.lcov
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+lib/
+*.js.map
+*.d.ts.map
+*.d.ts
+!*.d.ts.sample
+!*.d.ts.example
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
+.env.local
+.env.staging
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build output
+storybook-static
+
+# tmp folders
+tmp/
+temp/
+.tmp/
+.temp/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+*.orig
+*.rej
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.directory-encoded
+.dbs
+.fuse_hidden*
+.goutputstream-*
+.gvfs
+.Trash-*
+.Trash-*/**/*
+.nfs*
+
+# Docker
+docker-compose.override.yml
+docker-compose.*.yml
+!.dockerignore
+.dockerignore
+*.dockerfile
+!Dockerfile
+!Dockerfile.*
+docker/volumes/
+/volumes/
+/data/
+/postgres-data/
+/redis-data/
+/kafka-data/
+/zookeeper-data/
+/mysql-data/
+/mongodb-data/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/datasources.xml
+.idea/datasources.local.xml
+
+# Testing
+coverage/
+.nyc_output/
+.jest/
+test-report.html
+.nyc_output/
+test-results/
+e2e-report/
+cypress/
+cypress.json
+cypress.env.json
+playwright-report/
+playwright/.cache/
+
+# CI
+.circleci/
+.gitlab-ci.yml
+.travis.yml
+.jenkins/
+.github/workflows/*
+!.github/workflows/ci.yml
+!.github/workflows/deploy.yml
+
+# Production specific
+*.crt
+*.key
+*.pem
+*.p12
+*.pfx
+*.cert
+*.csr
+secrets/
+certificates/
+keys/
+
+# Misc
+.DS_Store
+*.log
+*.pem
+*.key
+*.cert
+*.crt
+*.csr
+.env
+.env.*
+!.env.example
+!.env.sample
+.vercel
+.now
+.netlify
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# Temporary files created by editors
+*.autosave
+.*.sw?
+*~
+*.un~
+*.orig
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.pkg
+*.deb
+*.rpm
+
+# Prisma specific
+.prisma/
+prisma/seed.js
+prisma/seed.ts
+!prisma/seed.example.ts
+!prisma/seed.example.js
+prisma/dev.db
+prisma/dev.db-journal
+prisma/test.db
+prisma/test.db-journal
+
+# Generated files
+src/generated/
+generated/
+.graphqlgenerated/
+types/generated/
+.gql-gen/
+.generated/
+
+# Temporary development files
+*.swp
+*.swo
+*~
+.DS_Store
+.idea
+.vscode
+*.log
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Build tools
+.eslintcache
+.stylelintcache
+.prettiercache
+.parcel-cache
+.cache
+dist/
+build/
+lib/
+out/
+.next/
+.nuxt/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Node version management
+.nvmrc
+.node-version
+.node-version-*
+.node_repl_history
+
+# Docker volumes
+docker/volumes/
+/volumes/
+/data/
+/postgres-data/
+/redis-data/
+/kafka-data/
+/zookeeper-data/
+
+# Prisma Studio
+prisma/studio/
+prisma/studio-*
+!prisma/studio.example.json
+
+# Application specific
+uploads/
+files/
+storage/
+temp/
+tmp/
+sessions/
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# Security
+*.p12
+*.pfx
+*.pem
+*.key
+*.crt
+*.csr
+secrets/
+credentials/
+private/
+.env.secrets
+.env.production.secrets
+
+# Health check files
+healthcheck.txt
+status.txt
+
+# Performance profiling
+profile-*.json
+heap-*.heapsnapshot
+cpu-*.cpuprofile
+
+# Debugging
+debug.log
+debug-*.log
+.vscode/launch.json
+.vscode/tasks.json
