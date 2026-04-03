@@ -95,29 +95,34 @@ router.get(
 
       const from = req.query.from
         ? new Date(req.query.from as string)
-        : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000); // default: last 30 days
-      const to = req.query.to ? new Date(req.query.to as string) : new Date();
+        : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+      const to = req.query.to
+        ? new Date(req.query.to as string)
+        : new Date();
 
-      // prisma.$queryRaw for queries Prisma can't express natively
-      const timeline = await prisma.$queryRaw<
-        { date: Date; clicks: bigint }[]
-      >`
-        SELECT
-          DATE_TRUNC('day', clicked_at) as date,
-          COUNT(*) as clicks
-        FROM url_clicks
-        WHERE url_id = ${urlId}
-          AND clicked_at BETWEEN ${from} AND ${to}
-        GROUP BY DATE_TRUNC('day', clicked_at)
-        ORDER BY date ASC
-      `;
-
-      res.json({
-        timeline: timeline.map((row: any) => ({
-          date: row.date.toISOString().split("T")[0],
-          clicks: Number(row.clicks), // BigInt → Number for JSON serialization
-        })),
+      // Use groupBy instead of raw SQL to avoid BigInt serialization issues
+      const clicks = await prisma.urlClick.findMany({
+        where: {
+          urlId,
+          clickedAt: { gte: from, lte: to },
+        },
+        select: { clickedAt: true },
+        orderBy: { clickedAt: "asc" },
       });
+
+      // Group by day in JavaScript
+      const grouped: Record<string, number> = {};
+      for (const click of clicks) {
+        const date = click.clickedAt.toISOString().split("T")[0];
+        grouped[date] = (grouped[date] || 0) + 1;
+      }
+
+      const timeline = Object.entries(grouped).map(([date, clicks]) => ({
+        date,
+        clicks,
+      }));
+
+      res.json({ timeline });
     } catch (err) {
       next(err);
     }
