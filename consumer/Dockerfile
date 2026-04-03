@@ -1,9 +1,6 @@
-# ─────────────────────────────────────────────
 # BUILD STAGE
-# ─────────────────────────────────────────────
 FROM node:20-alpine AS builder
 
-# Install OpenSSL — required by Prisma on Alpine
 RUN apk add --no-cache openssl
 
 WORKDIR /app
@@ -18,12 +15,9 @@ COPY tsconfig.json ./
 COPY src ./src
 RUN npm run build
 
-# ─────────────────────────────────────────────
 # PRODUCTION STAGE
-# ─────────────────────────────────────────────
 FROM node:20-alpine AS production
 
-# Install OpenSSL — required by Prisma on Alpine
 RUN apk add --no-cache openssl
 
 WORKDIR /app
