@@ -1,3 +1,6 @@
+# ─────────────────────────────────────────────
+# BUILD STAGE
+# ─────────────────────────────────────────────
 FROM node:20-alpine AS builder
 
 # Install OpenSSL — required by Prisma on Alpine
@@ -17,8 +20,6 @@ RUN npm run build
 
 # ─────────────────────────────────────────────
 # PRODUCTION STAGE
-# Only copies the compiled output — no TypeScript
-# source, no dev dependencies. Smaller image.
 # ─────────────────────────────────────────────
 FROM node:20-alpine AS production
 
@@ -28,15 +29,13 @@ RUN apk add --no-cache openssl
 WORKDIR /app
 
 COPY package*.json ./
-# Prisma needs its schema to run migrations
 COPY prisma ./prisma
-# npm ci --only=production skips devDependencies
+
 RUN npm ci --only=production
 
-# Copy compiled JS from build stage
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 3000
-
-# Migrations run first, then the server starts
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/index.js"]
+# No migrations here — the API container runs
+# `prisma migrate deploy` first on startup.
+# Consumer just connects and starts reading.
+CMD ["node", "dist/consumer.js"]
